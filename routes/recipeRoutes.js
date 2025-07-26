@@ -16,7 +16,7 @@ router.get("/recipes/favourites", authenticateToken, async (req, res) => {
 module.exports = router;
 
 // done for testing
-/* router.post("/recipes", async (req, res) => {
+router.post("/recipes", async (req, res) => {
   try {
     const recipe = new Recipe(req.body);
     await recipe.save();
@@ -25,4 +25,3 @@ module.exports = router;
     res.status(400).json({ error: err.message });
   }
 });
-*/
