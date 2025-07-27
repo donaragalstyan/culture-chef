@@ -86,7 +86,7 @@
 }
 
 .text-wrapper-3 {
-  font-size: 28px; /* Increased from earlier 20-24px */
+  font-size: 24px; 
   font-weight: 700;
   color: var(--primary);
   text-align: center;

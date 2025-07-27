@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { FaBookmark, FaRegBookmark, FaRedoAlt, FaTimes } from "react-icons/fa";
 import "../styles/recipe-display.css";
 
 export const RecipeDisplay = () => {
@@ -16,27 +17,22 @@ export const RecipeDisplay = () => {
     }
   };
 
+  const [isBookmarked, setIsBookmarked] = React.useState(false);
+
   const handleBookmark = () => {
-    // Get existing bookmarks or initialize empty array
     const bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
-    
-    // Check if recipe is already bookmarked
-    if (!bookmarks.some(b => b.id === recipe.id)) {
-      // Add to bookmarks
-      localStorage.setItem(
-        "bookmarks",
-        JSON.stringify([...bookmarks, { ...recipe, id: Date.now() }])
-      );
-      alert("Recipe bookmarked!");
+    if (!isBookmarked) {
+      localStorage.setItem("bookmarks", JSON.stringify([...bookmarks, { ...recipe, id: Date.now() }]));
+      setIsBookmarked(true);
     } else {
-      alert("Recipe already bookmarked");
+      const updatedBookmarks = bookmarks.filter(b => b.name !== recipe.name);
+      localStorage.setItem("bookmarks", JSON.stringify(updatedBookmarks));
+      setIsBookmarked(false);
     }
   };
 
   const handleRegenerate = () => {
-    // In a real app, this would call your AI generation API
     alert("Regenerating recipe with similar parameters...");
-    // For now, just refresh the page with the same recipe
     navigate("/recipe-display", { state: { recipe } });
   };
 
@@ -81,13 +77,13 @@ export const RecipeDisplay = () => {
 
       <div className="action-buttons">
         <button onClick={handleClose} className="action-btn close-btn">
-          Close
+          <FaTimes /> Close
         </button>
         <button onClick={handleRegenerate} className="action-btn regenerate-btn">
-          Regenerate
+          <FaRedoAlt /> Regenerate
         </button>
         <button onClick={handleBookmark} className="action-btn bookmark-btn">
-          Bookmark
+          {isBookmarked ? <FaBookmark /> : <FaRegBookmark />} Bookmark
         </button>
       </div>
     </div>

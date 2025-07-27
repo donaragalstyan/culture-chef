@@ -158,3 +158,10 @@
   max-width: 600px;
   margin: auto;
 }
+
+.error-message {
+  color: #ff4d4d;
+  font-size: 14px;
+  margin-top: 10px;
+  font-weight: bold;
+}

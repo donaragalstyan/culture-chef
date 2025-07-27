@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import "../styles/UserProfile.css";
 
 // Import your avatar icons
@@ -11,6 +12,8 @@ import women2 from "../assets/women-2.png";
 import women3 from "../assets/women-3.png";
 
 export const UserProfile = () => {
+  const location = useLocation();
+const selectedUser = location.state?.user; // { username, avatar }
   const [activeTab, setActiveTab] = useState("recipes");
   const [avatar, setAvatar] = useState(women1); // Default avatar
   const [showAvatarPicker, setShowAvatarPicker] = useState(false);
