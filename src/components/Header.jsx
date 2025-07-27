@@ -23,11 +23,10 @@ export const Header = ({ showNav = true }) => {
         
         {showNav && (
           <nav className="main-nav">
-            <Link to="/home">Home</Link>
-            <Link to="/recipe-display">Recipes</Link>
+            
             {user ? (
               <>
-                <Link to="/profile">Profile</Link>
+               
                 <button onClick={handleLogout} className="logout-btn">
                   Logout
                 </button>

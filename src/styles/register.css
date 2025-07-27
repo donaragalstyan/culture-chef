@@ -85,7 +85,23 @@
   text-decoration: underline;
 }
 
-.text-wrapper-3, .text-wrapper-4, .text-wrapper-5 {
+.text-wrapper-3 {
+  font-size: 28px; /* Increased from earlier 20-24px */
+  font-weight: 700;
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.text-wrapper-4 {
+  font-size: 18px; /* Slightly bigger */
+  font-weight: bold;
+  color: var(--text);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.text-wrapper-5 {
   text-align: center;
 }
 
