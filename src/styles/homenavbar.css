@@ -1,0 +1,44 @@
+.home-container {
+  max-width: 500px;
+  margin: auto;
+  font-family: 'Inter', sans-serif;
+}
+
+.tag-input {
+  margin-bottom: 20px;
+  
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.tags input {
+  border: none;
+  outline: none;
+  flex: 1;
+  min-width: 120px;
+}
+
+.tag {
+  background-color: #007BFF;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.tag button {
+  background: none;
+  border: none;
+  color: white;
+  margin-left: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
