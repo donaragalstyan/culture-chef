@@ -23,7 +23,7 @@ export const Login = () => {
     if (storedUser && storedUser.email === email && storedUser.password === password) {
       setError("");
       console.log("Login successful");
-      navigate("/home"); // Redirect to homepage
+      navigate("/home"); 
     } else {
       setError("Invalid email or password");
     }

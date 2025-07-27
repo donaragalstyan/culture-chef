@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "../styles/UserProfile.css";
 
-// Import your avatar icons
 import man1 from "../assets/man-1.png";
 import man2 from "../assets/man-2.png";
 import man3 from "../assets/man-3.png";
@@ -13,10 +11,12 @@ import women3 from "../assets/women-3.png";
 
 export const UserProfile = () => {
   const location = useLocation();
-const selectedUser = location.state?.user; // { username, avatar }
+  const selectedUser = location.state?.user; 
+
   const [activeTab, setActiveTab] = useState("recipes");
-  const [avatar, setAvatar] = useState(women1); // Default avatar
+  const [avatar, setAvatar] = useState(women1);
   const [showAvatarPicker, setShowAvatarPicker] = useState(false);
+  const [isPublic, setIsPublic] = useState(true); 
   const navigate = useNavigate();
 
   const user = {
@@ -85,7 +85,21 @@ const selectedUser = location.state?.user; // { username, avatar }
             </div>
           )}
         </div>
+
         <h2>{user.username}</h2>
+
+        {/* ✅ Public/Private Toggle */}
+        <div className="visibility-toggle">
+          <label>
+            <input
+              type="checkbox"
+              checked={isPublic}
+              onChange={() => setIsPublic(!isPublic)}
+            />
+            <div className="toggle-switch"></div>
+            <span>{isPublic ? "Public Account" : "Private Account"}</span>
+          </label>
+        </div>
       </div>
 
       <div className="profile-tabs">

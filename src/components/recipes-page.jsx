@@ -2,9 +2,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Recipes.css";
 
-// Import avatars
 import man1 from "../assets/man-1.png";
+import man2 from "../assets/man-2.png";
+import man3 from "../assets/man-3.png";
 import women1 from "../assets/women-1.png";
+import women2 from "../assets/women-2.png";
+import women3 from "../assets/women-3.png";
 
 export const Recipes = () => {
   const navigate = useNavigate();
