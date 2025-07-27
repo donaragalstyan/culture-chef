@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import "../styles/home.css";
 import { UserProfile } from "./user-profile";
-import { Recipes } from "./recipes-page";
 import { useNavigate } from "react-router-dom";
-
 
 export const Home = () => {
     const navigate = useNavigate();
@@ -42,7 +40,7 @@ export const Home = () => {
         }
     };
 
-     const handleGenerate = () => {
+    const handleGenerate = () => {
         // Generate a mock recipe (in a real app, this would come from an API)
         const generatedRecipe = {
             name: `${cuisine} ${ingredients[0]} Recipe`,
@@ -64,31 +62,32 @@ export const Home = () => {
         navigate("/recipe-display", { state: { recipe: generatedRecipe } });
     };
 
-
     return (
-    <div className="home-container">
-      {/* Navigation Tabs */}
-      <div className="tabs">
-        <div
-          className={`tab ${activeTab === "recipes" ? "active" : ""}`}
-          onClick={() => setActiveTab("recipes")}
-        >
-          Recipes
-        </div>
-        <div
-          className={`tab ${activeTab === "ai" ? "active" : ""}`}
-          onClick={() => setActiveTab("ai")}
-        >
-          AI Recipe Generator
-        </div>
-        <div
-          className={`tab ${activeTab === "profile" ? "active" : ""}`}
-          onClick={() => setActiveTab("profile")}
-        >
-          User Profile
-        </div>
-      </div>
+        <div className="home-container">
+            {/* Navigation Tabs - Removed Recipes tab */}
 
+
+            <div className="tabs">
+                <div
+                    className={`tab ${activeTab === "recipes" ? "active" : ""}`}
+                    onClick={() => setActiveTab("recipes")}
+                >
+                    Coming Soon
+                </div>
+
+                <div
+                    className={`tab ${activeTab === "ai" ? "active" : ""}`}
+                    onClick={() => setActiveTab("ai")}
+                >
+                    AI Recipe Generator
+                </div>
+                <div
+                    className={`tab ${activeTab === "profile" ? "active" : ""}`}
+                    onClick={() => setActiveTab("profile")}
+                >
+                    User Profile
+                </div>
+            </div>
 
             {/* Tab Content */}
             <div className="tab-content">
@@ -165,7 +164,6 @@ export const Home = () => {
                     </>
                 )}
 
-                {activeTab === "recipes" && <Recipes />}
                 {activeTab === "profile" && <UserProfile />}
             </div>
         </div>
