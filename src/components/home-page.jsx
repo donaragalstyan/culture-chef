@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "../styles/home.css";
-import { UserProfile } from "./user-profile";  // import the profile component
+import { UserProfile } from "./user-profile";
 import { Recipes } from "./recipes-page";
+import { useNavigate } from "react-router-dom";
 
 
 export const Home = () => {
+    const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState("ai");
 
     // Existing states for AI Generator
@@ -40,14 +42,28 @@ export const Home = () => {
         }
     };
 
-    const handleGenerate = () => {
-        alert(
-            `Ingredients: ${ingredients.join(", ")}\n` +
-            `Dietary Preferences: ${dietaryPreferences.join(", ")}\n` +
-            `Cuisine: ${cuisine}\n` +
-            `Prep Time: ${prepTime} minutes`
-        );
+     const handleGenerate = () => {
+        // Generate a mock recipe (in a real app, this would come from an API)
+        const generatedRecipe = {
+            name: `${cuisine} ${ingredients[0]} Recipe`,
+            cuisine,
+            prepTime,
+            ingredients,
+            culturalBackground: `This ${cuisine} recipe has deep cultural roots in the region. The combination of ${ingredients.join(", ")} is traditional and reflects the local culinary practices.`,
+            instructions: [
+                "Prepare all ingredients by washing and chopping as needed.",
+                "Heat oil in a large pan over medium heat.",
+                `Add ${ingredients[0]} and cook until fragrant.`,
+                `Add remaining ingredients except ${ingredients[ingredients.length - 1]}.`,
+                "Cook for 15-20 minutes, stirring occasionally.",
+                `Add ${ingredients[ingredients.length - 1]} and cook for additional 5 minutes.`,
+                "Serve hot and enjoy!"
+            ]
+        };
+
+        navigate("/recipe-display", { state: { recipe: generatedRecipe } });
     };
+
 
     return (
     <div className="home-container">

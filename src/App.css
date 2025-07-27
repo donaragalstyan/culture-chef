@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+/* styles.css or your main CSS file */
+:root {
+  /* Your existing variables */
+  --primary: #578088;
+  /* Add if needed */
+  --primary-dark: #3a5a6b;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}

@@ -1,27 +1,31 @@
-import { BrowserRouter as Router, Routes, Route, useLocation, Navigate  } from "react-router-dom";
-import { HomeNavbar } from "./components/home-navbar";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
 import { Register } from "./components/register";
 import { Login } from "./components/login";
-import { Home } from "./components/home-page"; // <-- add this
+import { Home } from "./components/home-page"; 
+import { RecipeDisplay } from "./components/recipe-display";
+import { RecipeDetail } from "./components/recipe-detail";
 
 function App() {
   return (
     <Router>
-      <ConditionalNavbar />
-      <Routes>
-        <Route path="/" element={<Navigate to="/Login" />} /> {/* Default to login */}
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<Home />} />
-      </Routes>
+      <div className="app-container">
+        <Header />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Navigate to="/login" />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/recipe-display" element={<RecipeDisplay />} />
+            <Route path="/recipe/:id" element={<RecipeDetail />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </Router>
   );
-}
-
-function ConditionalNavbar() {
-  const location = useLocation();
-  const authPages = ["/register", "/login"];
-  return authPages.includes(location.pathname) ? <HomeNavbar /> : null;
 }
 
 export default App;

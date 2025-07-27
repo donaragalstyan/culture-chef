@@ -1,51 +1,54 @@
 import React, { useState } from "react";
-import "../styles/UserProfile.css"; // Assuming you have a CSS file for styling
+import { useNavigate } from "react-router-dom";
+import "../styles/UserProfile.css";
 
 export const UserProfile = () => {
   const [activeTab, setActiveTab] = useState("recipes");
+  const navigate = useNavigate();
 
-  // Dummy data (replace with your actual data)
   const user = {
-    avatarUrl: "", // sample avatar
     username: "foodie123",
   };
 
-  const userRecipes = [
-    { id: 1, title: "Spaghetti Bolognese", image: "https://source.unsplash.com/200x150/?pasta" },
-    { id: 2, title: "Chicken Curry", image: "https://source.unsplash.com/200x150/?chicken" },
-    // more recipes...
+const userRecipes = [
+  { 
+      id: 1, 
+      title: "Spaghetti Bolognese",
+      cuisine: "Italian",
+      prepTime: 45,
+    ingredients: ["spaghetti", "ground beef", "tomato sauce"],
+    instructions: ["Cook pasta", "Prepare sauce", "Combine and serve"]
+  },
   ];
 
   const bookmarkedRecipes = [
-    { id: 3, title: "Vegan Salad", image: "https://source.unsplash.com/200x150/?salad" },
-    // more bookmarks...
+    { id: 7, title: "Greek Salad" },
+    { id: 8, title: "Mushroom Risotto" },
   ];
 
-  const historyRecipes = [
-    { id: 4, title: "Pancakes", image: "https://source.unsplash.com/200x150/?pancakes" },
-    // more history...
-  ];
 
   const renderRecipesGrid = (recipes) => (
     <div className="recipes-grid">
       {recipes.map((recipe) => (
-        <div key={recipe.id} className="recipe-card">
-          <img src={recipe.image} alt={recipe.title} />
+        <div 
+          key={recipe.id} 
+          className="recipe-card"
+          onClick={() => navigate(`/recipe/${recipe.id}`, { state: { recipe } })}
+        >
+          <div className="recipe-icon">{recipe.icon || "🍳"}</div>
           <div className="recipe-title">{recipe.title}</div>
         </div>
       ))}
     </div>
   );
 
+
   return (
     <div className="user-profile-container">
-      {/* Avatar & Username */}
       <div className="profile-header">
-        <img src={user.avatarUrl} alt="avatar" className="avatar" />
         <h2>{user.username}</h2>
       </div>
 
-      {/* Tabs */}
       <div className="profile-tabs">
         <button
           className={activeTab === "recipes" ? "tab active" : "tab"}
@@ -59,19 +62,11 @@ export const UserProfile = () => {
         >
           Bookmarks
         </button>
-        <button
-          className={activeTab === "history" ? "tab active" : "tab"}
-          onClick={() => setActiveTab("history")}
-        >
-          History
-        </button>
       </div>
 
-      {/* Content */}
       <div className="tab-content">
         {activeTab === "recipes" && renderRecipesGrid(userRecipes)}
         {activeTab === "bookmarks" && renderRecipesGrid(bookmarkedRecipes)}
-        {activeTab === "history" && renderRecipesGrid(historyRecipes)}
       </div>
     </div>
   );

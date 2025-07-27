@@ -1,15 +1,40 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; 
 import "../styles/Recipes.css";
 
 export const Recipes = () => {
   const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const navigate = useNavigate();
 
-  const recipes = [
-    { id: 1, title: "Spaghetti Bolognese", desc: "Classic Italian pasta", image: "https://source.unsplash.com/300x200/?pasta", details: "A rich, meaty sauce served over spaghetti pasta. Perfect for dinner!" },
-    { id: 2, title: "Chicken Curry", desc: "Spicy and flavorful", image: "https://source.unsplash.com/300x200/?chicken", details: "A fragrant curry made with tender chicken and aromatic spices." },
-    { id: 3, title: "Vegan Salad", desc: "Fresh and healthy", image: "https://source.unsplash.com/300x200/?salad", details: "A mix of fresh vegetables and tangy dressing for a healthy meal." },
-    { id: 4, title: "Pancakes", desc: "Sweet breakfast favorite", image: "https://source.unsplash.com/300x200/?pancakes", details: "Fluffy pancakes served with maple syrup and fresh fruits." },
-  ];
+const recipes = [
+  { 
+      id: 1, 
+      title: "Spaghetti Bolognese", 
+      desc: "Classic Italian pasta", 
+      details: "A rich, meaty sauce served over spaghetti pasta. Perfect for dinner!",
+      cuisine: "Italian",
+      prepTime: 45,
+    ingredients: [
+      "400g spaghetti",
+      "500g ground beef",
+      "1 onion, diced",
+      "2 cloves garlic, minced",
+      "400g canned tomatoes",
+      "2 tbsp tomato paste",
+      "1 tsp dried oregano",
+      "Salt and pepper to taste"
+    ],
+    instructions: [
+      "Cook spaghetti according to package instructions.",
+      "Brown the ground beef in a large pan.",
+      "Add onion and garlic, cook until soft.",
+      "Stir in tomatoes, tomato paste, and oregano.",
+      "Simmer for 20 minutes, season to taste.",
+      "Serve sauce over cooked spaghetti."
+    ]
+  },
+  // ... other recipes with similar structure
+];
 
   const closeModal = () => setSelectedRecipe(null);
 
@@ -19,21 +44,22 @@ export const Recipes = () => {
       <div className="recipes-grid">
         {recipes.map((recipe) => (
           <div key={recipe.id} className="recipe-card">
-            <img src={recipe.image} alt={recipe.title} />
+            <div className="recipe-icon">🍝</div>
             <h3>{recipe.title}</h3>
             <p>{recipe.desc}</p>
-            <button className="view-btn" onClick={() => setSelectedRecipe(recipe)}>
+            <button 
+              className="view-btn" 
+              onClick={() => navigate(`/recipe/${recipe.id}`, { state: { recipe } })}
+            >
               View Details
             </button>
           </div>
         ))}
       </div>
 
-      {/* Modal */}
       {selectedRecipe && (
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <img src={selectedRecipe.image} alt={selectedRecipe.title} />
             <h2>{selectedRecipe.title}</h2>
             <p>{selectedRecipe.details}</p>
             <button className="close-btn" onClick={closeModal}>Close</button>
