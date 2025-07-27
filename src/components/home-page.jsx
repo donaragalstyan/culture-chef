@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "../styles/home.css";
 import { UserProfile } from "./user-profile";  // import the profile component
+import { Recipes } from "./recipes-page";
+
 
 export const Home = () => {
     const [activeTab, setActiveTab] = useState("ai");
@@ -147,7 +149,7 @@ export const Home = () => {
                     </>
                 )}
 
-                {activeTab === "recipes" && <h2>Saved Recipes Coming Soon...</h2>}
+                {activeTab === "recipes" && <Recipes />}
                 {activeTab === "profile" && <UserProfile />}
             </div>
         </div>
