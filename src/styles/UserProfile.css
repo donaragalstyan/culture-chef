@@ -1,0 +1,100 @@
+/* UserProfile.css */
+
+.user-profile-container {
+  max-width: 600px;
+  margin: 20px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  padding: 0 16px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: #ddd; /* fallback if no avatar */
+  object-fit: cover;
+  border: 2px solid #aaa;
+}
+
+.profile-header h2 {
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.profile-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.profile-tabs .tab {
+  flex: 1;
+  padding: 10px 0;
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.profile-tabs .tab:hover {
+  color: #111;
+}
+
+.profile-tabs .tab.active {
+  border-bottom: 2px solid #4caf50; /* subtle green underline */
+  color: #4caf50;
+  font-weight: 600;
+}
+
+.tab-content {
+  min-height: 200px;
+}
+
+.recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.recipe-card {
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fafafa;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.1);
+  transition: box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.recipe-card:hover {
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
+}
+
+.recipe-card img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  display: block;
+}
+
+.recipe-title {
+  padding: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  color: #222;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

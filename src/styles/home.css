@@ -1,14 +1,14 @@
 /* Home.css */
 
 .home-container {
-  max-width: 500px;
-  margin: 40px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 8px;
-  font-family: 'Inter', Helvetica, sans-serif;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background: none;       /* Remove background color */
+  border: none;           /* Remove border */
+  box-shadow: none;       /* Remove any shadow */
+  padding: 0;             /* Remove extra padding */
+  max-width: 600px;       /* Optional: keep width manageable */
+  margin: 0 auto;         /* Center horizontally */
 }
+
 
 .home-container h2 {
   text-align: center;
@@ -123,4 +123,38 @@
 
 .generate-btn:hover {
   background-color: #0056b3;
+}
+
+/* Tabs Container */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab {
+    padding: 12px 20px;
+    margin: 0 10px;
+    background: #f4f4f4;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.tab.active {
+    background: #007bff;
+    color: white;
+    transform: scale(1.1);
+}
+
+.tab:hover {
+    background: #e8e8e8;
+}
+
+.tab-content {
+    text-align: center;
+    max-width: 600px;
+    margin: auto;
 }
